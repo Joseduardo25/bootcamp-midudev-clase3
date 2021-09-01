@@ -5,19 +5,36 @@ import './index.css';
 
 
 const App = () => {
+  /*
   const [left, setLeft] = useState(10)
   const [right, setRight] = useState(10)
+*/
 
+  const [counters, setCounters] = useState({left: 0, right: 0})
+  
+  const handleClickLeft = () => {
+    setCounters({
+      left: counters.left +1,
+      right: counters.right 
+    })
+  }
+
+  const handleClickRight = () => {
+    setCounters({
+      left: counters.left,
+      right: counters.right +1
+    })
+  }
   return (
     <div>
-      {left}
-      <button onClick={() => setLeft(left + 1)}>
+      {counters.left}
+      <button onClick={handleClickLeft}>
         left
       </button>
-      <button onClick={() => setRight(right + 1)}>
+      <button onClick={handleClickRight}>
         right
       </button>
-      {right}
+      {counters.right}
     </div>
   )
 }
