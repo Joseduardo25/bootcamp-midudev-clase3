@@ -1,65 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { useState } from 'react'
+import  ReactDOM  from 'react-dom'
 import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { useState } from 'react';
-import { render } from '@testing-library/react';
 
-
-const Counter = ({numero}) => {
-  return(
-    <h1>{numero}</h1>
-  )
-}
 
 const App = () => {
-  const [contador, setContador] = useState(0)
+  const [left, setLeft] = useState(10)
+  const [right, setRight] = useState(10)
 
-  const aumentar = () => {
-    setContador(contador + 1)
-  }
-
-  const restar = () => {
-    setContador(contador - 1)
-  }
-
-  const reset = () => {
-    setContador(0)
-  }
-
-  const isEven = contador % 2 === 0
-  const mensaje = isEven ? 'es par' : 'es impar'
-  
-  
-  return(
+  return (
     <div>
-      <p>El valor del contador es:</p>
-      <Counter numero={contador} />
-      <small>{mensaje}</small>
-      <br/>
-      <button onClick={restar}>
-        reducir
+      {left}
+      <button onClick={() => setLeft(left + 1)}>
+        left
       </button>
-      <button onClick={aumentar}>
-        aumentar
+      <button onClick={() => setRight(right + 1)}>
+        right
       </button>
-      <button onClick={reset}>
-        reset
-      </button>
+      {right}
     </div>
   )
 }
 
 
-  ReactDOM.render(
-      <App />,document.getElementById('root')
-  );
+ReactDOM.render(
+  <App />,document.getElementById("root")
+);
 
-
-
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
