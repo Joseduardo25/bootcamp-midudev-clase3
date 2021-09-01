@@ -10,19 +10,21 @@ const App = () => {
   const [right, setRight] = useState(10)
 */
 
-  const [counters, setCounters] = useState({left: 0, right: 0})
+  const [counters, setCounters] = useState({left: 0, right: 0, click: 0})
   
   const handleClickLeft = () => {
     setCounters({
       left: counters.left +1,
-      right: counters.right 
+      right: counters.right,
+      click: counters.click +1 
     })
   }
 
   const handleClickRight = () => {
     setCounters({
       left: counters.left,
-      right: counters.right +1
+      right: counters.right +1,
+      click: counters.click +1
     })
   }
   return (
@@ -35,6 +37,8 @@ const App = () => {
         right
       </button>
       {counters.right}
+      <br/>
+      <h3>Clicks totales: {counters.click}</h3>
     </div>
   )
 }
