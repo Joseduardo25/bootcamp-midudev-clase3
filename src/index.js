@@ -16,16 +16,27 @@ const App = () => {
     updateContador(contadorValue - 1)
   }
 
+  const reset = () => {
+    updateContador(0)
+  }
+
+  const isEven = contadorValue % 2 === 0
+
   console.log(render)
   return(
     <div>
       <p>El valor del contador es:</p>
       <h1>{contadorValue}</h1>
+      <small>{isEven ? 'es par' : 'es impar'}</small>
+      <br/>
       <button onClick={restar}>
         reducir
       </button>
       <button onClick={aumentar}>
-        incrementar
+        aumentar
+      </button>
+      <button onClick={reset}>
+        reset
       </button>
     </div>
   )
