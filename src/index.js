@@ -5,29 +5,37 @@ import reportWebVitals from './reportWebVitals';
 import { useState } from 'react';
 import { render } from '@testing-library/react';
 
+
+const Counter = ({numero}) => {
+  return(
+    <h1>{numero}</h1>
+  )
+}
+
 const App = () => {
-  const [contadorValue, updateContador] = useState(0)
+  const [contador, setContador] = useState(0)
 
   const aumentar = () => {
-    updateContador(contadorValue + 1)
+    setContador(contador + 1)
   }
 
   const restar = () => {
-    updateContador(contadorValue - 1)
+    setContador(contador - 1)
   }
 
   const reset = () => {
-    updateContador(0)
+    setContador(0)
   }
 
-  const isEven = contadorValue % 2 === 0
-
-  console.log(render)
+  const isEven = contador % 2 === 0
+  const mensaje = isEven ? 'es par' : 'es impar'
+  
+  
   return(
     <div>
       <p>El valor del contador es:</p>
-      <h1>{contadorValue}</h1>
-      <small>{isEven ? 'es par' : 'es impar'}</small>
+      <Counter numero={contador} />
+      <small>{mensaje}</small>
       <br/>
       <button onClick={restar}>
         reducir
