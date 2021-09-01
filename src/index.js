@@ -8,16 +8,25 @@ import { render } from '@testing-library/react';
 const App = () => {
   const [contadorValue, updateContador] = useState(0)
 
-  setInterval(() => {
+  const aumentar = () => {
     updateContador(contadorValue + 1)
-  }, 1000)
+  }
+
+  const restar = () => {
+    updateContador(contadorValue - 1)
+  }
 
   console.log(render)
   return(
     <div>
       <p>El valor del contador es:</p>
       <h1>{contadorValue}</h1>
-      <h2>Magia de React</h2>
+      <button onClick={restar}>
+        reducir
+      </button>
+      <button onClick={aumentar}>
+        incrementar
+      </button>
     </div>
   )
 }
