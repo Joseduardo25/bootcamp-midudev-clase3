@@ -18,11 +18,13 @@ const App = () => {
   const [right, setRight] = useState(10)
 */
 
-  const [counters, setCounters] = useState({
-    left: 0,
-    right: 0,
+  const INITIAL_COUNTER_STATE = {
+    left: 2,
+    right: 4,
     mensaje: 'mensaje de estado'
-  })
+  }
+
+  const [counters, setCounters] = useState(INITIAL_COUNTER_STATE)
   
   const [clicks, setClicks] = useState([])
 
@@ -49,10 +51,7 @@ const App = () => {
   }
 
   const handleReset = () => {
-    setCounters({
-      left: 0, 
-      right: 0
-    })
+    setCounters(INITIAL_COUNTER_STATE)
 
     setClicks([])
   }
