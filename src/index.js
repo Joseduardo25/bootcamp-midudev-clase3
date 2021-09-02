@@ -3,6 +3,14 @@ import { useState } from 'react'
 import  ReactDOM  from 'react-dom'
 import './index.css';
 
+const WarningNotUsed = () => {
+  return <h1>Todavia no se ha usado el contador</h1>
+}
+
+const ListOfClicks = ({clicks}) => {
+  return <h3>{clicks.join(', ')}</h3>
+}
+
 
 const App = () => {
   /*
@@ -13,7 +21,6 @@ const App = () => {
   const [counters, setCounters] = useState({
     left: 0,
     right: 0,
-    click: 0,
     mensaje: 'mensaje de estado'
   })
   
@@ -24,7 +31,6 @@ const App = () => {
       ...counters,
       left: counters.left +1,
       right: counters.right,
-      click: counters.click +1 
     }
     setCounters(newCounterState)
 
@@ -37,11 +43,20 @@ const App = () => {
       ...counters,
       left: counters.left,
       right: counters.right +1,
-      click: counters.click +1
     })
 
     setClicks((prevClicks) => [...prevClicks, 'R'] )
   }
+
+  const handleReset = () => {
+    setCounters({
+      left: 0, 
+      right: 0
+    })
+
+    setClicks([])
+  }
+
   return (
     <div>
       {counters.left}
@@ -53,10 +68,14 @@ const App = () => {
       </button>
       {counters.right}
       <br/>
-      <h3>Clicks totales: {counters.click}</h3>
+      <button onClick={handleReset}>
+        reset
+      </button>
+      <br/>
+      <h3>Clicks totales: {clicks.length}</h3>
       {counters.mensaje}
       <br/>
-      {clicks.join(', ')}
+      {clicks.length === 0 ? <WarningNotUsed /> : <ListOfClicks clicks={clicks} />}
     </div>
     
   )
