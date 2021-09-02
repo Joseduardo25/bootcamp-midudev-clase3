@@ -17,6 +17,8 @@ const App = () => {
     mensaje: 'mensaje de estado'
   })
   
+  const [clicks, setClicks] = useState([])
+
   const handleClickLeft = () => {
     const newCounterState = {
       ...counters,
@@ -25,14 +27,20 @@ const App = () => {
       click: counters.click +1 
     }
     setCounters(newCounterState)
+
+    setClicks((prevClicks) => [...prevClicks, 'L'])
+
   }
 
   const handleClickRight = () => {
     setCounters({
+      ...counters,
       left: counters.left,
       right: counters.right +1,
       click: counters.click +1
     })
+
+    setClicks((prevClicks) => [...prevClicks, 'R'] )
   }
   return (
     <div>
@@ -47,7 +55,10 @@ const App = () => {
       <br/>
       <h3>Clicks totales: {counters.click}</h3>
       {counters.mensaje}
+      <br/>
+      {clicks.join(', ')}
     </div>
+    
   )
 }
 
